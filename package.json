@@ -4,6 +4,7 @@
   "description": "SandBox to play React build tools",
   "main": "index.js",
   "scripts": {
+    "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "OveR1st",
@@ -17,6 +18,7 @@
     "@babel/plugin-transform-template-literals": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "file-loader": "^6.2.0",
     "webpack": "^5.11.0",
     "webpack-cli": "^4.3.0"
   },
