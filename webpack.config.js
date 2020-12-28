@@ -7,9 +7,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader'}
-        ]
+        loader: 'babel-loader' // когда 1 лоадер можно без [] use
       },
       // Loading images
       {
@@ -38,12 +36,14 @@ module.exports = {
         ]
       },
       {
-        // css loaders
+        // Loading CSS
         test: /\.(css)$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' }
-        ]
+        use: [ 'style-loader', 'css-loader' ] // без вложеных {} с loader key 
+      },
+      {
+        // Loading SASS/SCSS
+        test: /\.(s[ca]ss)$/,
+        use: [ 'style-loader', 'css-loader', 'sass-loader' ]// идет к обработка и передает выше по цепи
       }
     ]
   }
