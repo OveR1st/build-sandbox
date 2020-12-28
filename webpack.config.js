@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: "development",
 
@@ -39,18 +40,29 @@ module.exports = {
       // Loading CSS
       {
         test: /\.(css)$/,
-        use: [ 'style-loader', 'css-loader' ] // без вложеных {} с loader key 
+        use: [ MiniCssExtractPlugin.loader, 'css-loader' ] // без вложеных {} с loader key 
       },
        // Loading SASS/SCSS
       {
         test: /\.(s[ca]ss)$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ]// идет к обработка и передает выше по цепи
+        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]// идет к обработка и передает выше по цепи
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title : 'Hello World',
+      buildTime: new Date().toString(),
       template: 'public/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'main-[hash:8].css' // хеш - измение при каждой сборке 
     })
-  ]
+  ],
+  
+  devServer: {
+    open: true
+  }
 }
+
+// MiniCssExtractPlugin.loader - для продакшн, а обычные лоадеры для dev
