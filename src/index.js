@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import css from './main.scss';
 
-console.log(css); // {}
+console.log(css);
 
 const App = () => <h1>Hello World!</h1>
 
